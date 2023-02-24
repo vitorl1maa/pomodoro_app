@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <PomodoroTimer 
-        defaultPomodoroTime={10}
-        shortRestTime={2}
-        longRestTime={5}
+        defaultPomodoroTime={6600}
+        shortRestTime={300}
+        longRestTime={650}
         cycles={4}
       />
     </div>

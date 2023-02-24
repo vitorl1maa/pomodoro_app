@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback} from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useInterval } from '../hooks/useInterval';
 import ButtonController from '../shared-components/ButtonController';
 import TimerComponent from './TimerComponent';
 import styled from '@emotion/styled';
+
 
 import bellStart from '../sounds/src_sounds_bell-start.mp3';
 import bellFinish from '../sounds/src_sounds_bell-finish.mp3';
@@ -87,7 +88,9 @@ const PomodoroTimer = (props: Props): JSX.Element => {
   return (
     <BoxPomodoro>
       <div className='container'>
-        <h2>Status: {learning ? 'Estudando' : 'Descansando'}</h2>
+        <div className='tasks-name'>
+        </div>
+        <h2>Status: <span>{learning ? 'Estudando' : 'Descansando'}</span></h2>
         <TimerComponent mainTime={mainTime}/>
         <div className='controlls-btn'>
           <ButtonController text='Iniciar' onClick={() => configureWork()}/>
@@ -100,7 +103,7 @@ const PomodoroTimer = (props: Props): JSX.Element => {
 
         <div className='pomodoroDetails'>
           <p>Ciclos concluídos: <span>{completedCycles}</span></p>
-          <p>Horas Trabalhadas: <span>{secondsToTimes(fulllearningTime)}</span></p>
+          <p>Tempo de foco: <span>{secondsToTimes(fulllearningTime)}</span></p>
           <p>Pomodoros concluídos: <span>{numberOfPomodoros}</span></p>
         </div>
       </div>
@@ -110,6 +113,7 @@ const PomodoroTimer = (props: Props): JSX.Element => {
 
 const BoxPomodoro = styled.div`
   width: 50%;
+  height: 90vh;
   background-color: #262626;
   display: flex;
   align-items: center;
@@ -117,6 +121,12 @@ const BoxPomodoro = styled.div`
   flex-direction: column;
   border: 1px solid #9e9e9ecc;
   border-radius: 10px;
+  
+
+  span {
+    color: #ffffff;
+    margin-left: 10px;
+  }
 
   .container {
     display: flex;
@@ -129,15 +139,26 @@ const BoxPomodoro = styled.div`
       display: flex;
       font-size: 1.8rem;
       padding: 10px;
-      color: #ffffff;
+      color: #9e9e9ecc;
+      
       
     }
 
+    .tasks-name {
+      display: flex;
+    }
+
     @media (max-width: 500px) {
-      padding: 1rem 3rem;
+      padding: 1rem 1rem;
+      margin: 1rem 2rem;
 
       > h1 {
         font-size: 1.3rem;
+      }
+
+      .controlls-btn {
+        display: flex;
+        gap: 1rem;
       }
     }
 
@@ -156,6 +177,10 @@ const BoxPomodoro = styled.div`
 
     > p {
       font-size: 1.3rem;
+      border: 1px solid #9e9e9ecc;
+      border-radius: 5px;
+      padding: .7rem 2rem;
+      margin-bottom: 1rem;
     }
 
     span {
