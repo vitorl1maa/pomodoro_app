@@ -9,7 +9,7 @@
 <br>
 
 <p align="center">
-  <img alt="Pomodoro APP" src=".github/pomodoro_app" width="100%">
+  <img alt="Pomodoro APP" src=".github/pomodoro_app.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
